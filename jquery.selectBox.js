@@ -512,7 +512,7 @@
 		if (settings.styleClass) {
 			options.addClass(settings.styleClass);
 		}
-		
+
         if (select.triggerHandler('beforeopen')) {
             return false;
         }
@@ -548,7 +548,7 @@
 
         $(document).bind('mousedown.selectBox', function (event) {
             if (1 === event.which) {
-                if ($(event.target).parents().andSelf().hasClass('selectBox-options')) {
+                if ($(event.target).parents().addBack().hasClass('selectBox-options')) {
                     return;
                 }
                 self.hideMenus();
@@ -1047,8 +1047,8 @@
     setOptions : function (options) {
         var select = $(this)
             , control = select.data('selectBox-control');
-         
-      
+
+
         switch (typeof(options)) {
             case 'string':
                 select.html(options);
@@ -1077,12 +1077,12 @@
             // Refresh the control
             $(this).selectBox('refresh');
             // Remove old options
-  
+
         }
       },
-      
-      
-      
+
+
+
       selectBox: function (method, options) {
             var selectBox;
 
@@ -1099,11 +1099,11 @@
                     break;
                 case 'options':
                     // Getter
-                   
+
                     if (undefined === options) {
                         return $(this).data('selectBox-control').data('selectBox-options');
                     }
-                   
+
                     // Setter
                     $(this).each(function () {
                         $(this).setOptions(options);
